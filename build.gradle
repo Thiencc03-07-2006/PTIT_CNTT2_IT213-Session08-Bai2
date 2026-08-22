@@ -29,7 +29,6 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
 
     implementation 'org.postgresql:postgresql'
-    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
