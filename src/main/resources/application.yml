@@ -1,0 +1,40 @@
+spring:
+    application:
+        name: crm
+    datasource:
+        url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres?user=postgres.wyrwdyujvdeufhtpczye&password=8UucfQSXd$M%25UBT&sslmode=require
+        driver-class-name: org.postgresql.Driver
+
+        hikari:
+            maximum-pool-size: 4
+            minimum-idle: 2
+            idle-timeout: 30000
+            connection-timeout: 20000
+
+    ai:
+        vectorstore:
+            pgvector:
+                table-name: vector_store
+                dimension: 768
+                initialize-schema: true
+        openai:
+            base-url: ${OPENROUTER_BASE_URL}
+            api-key: ${OPENROUTER_API_KEY}
+            chat:
+                model: ${OPENROUTER_MODEL}
+                temperature: 0.5
+                max-tokens: 10000
+    autoconfigure:
+        exclude:
+            - org.springframework.ai.model.ollama.autoconfigure.OllamaEmbeddingAutoConfiguration
+            - org.springframework.ai.model.ollama.autoconfigure.OllamaApiAutoConfiguration
+            - org.springframework.ai.model.ollama.autoconfigure.OllamaChatAutoConfiguration
+#        ollama:
+#            base-url: http://localhost:11434
+#            embedding:
+#                options:
+#                    model: nomic-embed-text
+
+logging:
+    level:
+        com.rikkei.crm: DEBUG
